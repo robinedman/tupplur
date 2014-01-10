@@ -51,28 +51,6 @@ module Tupplur
     end
 
     module ClassMethods
-      # Externally accessible fields and embedded documents.
-      def externally_accessible(*fields)
-        const_get(:EXTERNALLY_ACCESSIBLE_FIELDS).push(*fields)
-      end
-
-      # Externally readable fields and embedded documents.
-      def externally_readable(*fields)
-        const_get(:EXTERNALLY_READABLE_FIELDS).push(*fields)
-      end
-
-      # Used to define allowed REST operations (e.g. :read, :create, :update, :delete).
-      # Example usage:
-      # class MyModel 
-      #   include Mongoid::Document
-      #   include Tupplur::ModelExtensions
-      #
-      #   rest_interface :read, :update, :delete
-      #
-      def rest_interface(*operations)
-        const_get(:REST_INTERFACE).push(*operations)
-      end
-
       # Does the model allow a certain REST operation?
       # If no operation given: Does the model allow any REST operation at all?
       def rest?(operation = nil)
@@ -125,6 +103,31 @@ module Tupplur
         allowed_fields = filter_accessible_fields(fields)
         self.create!(allowed_fields)
       end
+
+      private
+
+      # Externally accessible fields and embedded documents.
+      def externally_accessible(*fields)
+        const_get(:EXTERNALLY_ACCESSIBLE_FIELDS).push(*fields)
+      end
+
+      # Externally readable fields and embedded documents.
+      def externally_readable(*fields)
+        const_get(:EXTERNALLY_READABLE_FIELDS).push(*fields)
+      end
+
+      # Used to define allowed REST operations (e.g. :read, :create, :update, :delete).
+      # Example usage:
+      # class MyModel 
+      #   include Mongoid::Document
+      #   include Tupplur::ModelExtensions
+      #
+      #   rest_interface :read, :update, :delete
+      #
+      def rest_interface(*operations)
+        const_get(:REST_INTERFACE).push(*operations)
+      end
+
 
       def filter_accessible_fields(hsh)
         hsh.slice(*const_get(:EXTERNALLY_ACCESSIBLE_FIELDS).map(&:to_s))
