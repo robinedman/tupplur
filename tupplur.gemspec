@@ -6,10 +6,10 @@ require 'tupplur/version'
 Gem::Specification.new do |spec|
   spec.name          = "tupplur"
   spec.version       = Tupplur::VERSION
-  spec.authors       = ["robin"]
+  spec.authors       = ["Robin Edman"]
   spec.email         = ["robin.edman@gmail.com"]
   spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.summary       = spec.description
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,15 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "turn", "~> 0.9"
+  spec.add_development_dependency "activesupport", "~> 4.0"
+  spec.add_development_dependency "rack-test", "~> 0.6.2"
+  spec.add_development_dependency "virtus", "~> 1.0"
+
+  spec.add_runtime_dependency "cuba", "~>3.1.0"
+  # Mongoid is an implicitly assumed dependency.
+
+  # We don't specify a version since we don't want to risk conflicts with
+  # Mongoid.
+  spec.add_runtime_dependency "activesupport"
 end
