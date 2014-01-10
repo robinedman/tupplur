@@ -1,4 +1,4 @@
-Copyright (c) 2014 robin
+Copyright (c) 2014 Robin Edman
 
 MIT License
 
