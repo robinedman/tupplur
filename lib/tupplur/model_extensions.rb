@@ -70,38 +70,38 @@ module Tupplur
       end
 
       def rest_update(document_id, client_model)
-        raise Tupplur::Error::RESTOperationNotAllowed.new('update') unless self.rest?(:update)
+        raise Tupplur::Error::RESTOperationNotAllowed.new('update') unless rest?(:update)
 
-        self.find(document_id).external_update!(client_model)
+        find(document_id).external_update!(client_model)
       end
 
       def rest_delete(document_id)
         raise Tupplur::Error::RESTOperationNotAllowed.new('delete') unless rest?(:delete)
 
-        self.find(document_id).delete
+        find(document_id).delete
       end
 
       def rest_create(client_fields)
         raise Tupplur::Error::RESTOperationNotAllowed.new('create') unless rest?(:create)
 
-        self.external_create!(client_fields)
+        external_create!(client_fields)
       end
 
       def rest_read_document(document_id)
         raise Tupplur::Error::RESTOperationNotAllowed.new('read') unless rest?(:read)
 
-        self.find(document_id).as_external_document
+        find(document_id).as_external_document
       end
 
       def rest_read_all
         raise Tupplur::Error::RESTOperationNotAllowed.new('read') unless rest?(:read)
 
-        self.all.map { |m| m.as_external_document }
+        all.map { |m| m.as_external_document }
       end
 
       def external_create!(fields)
         allowed_fields = filter_accessible_fields(fields)
-        self.create!(allowed_fields)
+        create!(allowed_fields)
       end
 
       private
