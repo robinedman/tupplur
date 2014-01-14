@@ -1,6 +1,6 @@
 class User
   include Tupplur::ModelExtensions
-  include MockMongoidDocument
+  include Mongoid::Document
 
   rest_interface :create, 
                  :read, 
@@ -12,9 +12,9 @@ class User
 
   externally_readable :active
 
-  attribute :name, String
-  attribute :email, String
-  attribute :password, String
-  attribute :active, Boolean, default: false
+  field :name, type: String
+  field :email, type: String
+  field :password, type: String
+  field :active, type: Boolean, default: false
 end
 

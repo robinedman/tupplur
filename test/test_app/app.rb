@@ -1,5 +1,10 @@
+require "mongoid"
+require_relative "helpers"
+
+cd_to_here
+Mongoid.load!("./mongoid.yml")
+
 require_relative "../../lib/tupplur"
-require_relative "mock_mongoid_document"
 require_relative "models/user"
 require_relative "models/secret"
 
@@ -12,3 +17,4 @@ Cuba.define do
     run Tupplur::RESTEndpoint.new(Secret)
   end
 end
+

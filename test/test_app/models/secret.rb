@@ -1,7 +1,7 @@
 class Secret
   include Tupplur::ModelExtensions
-  include MockMongoidDocument
+  include Mongoid::Document
 
-  attribute :message, String
+  field :message, type: String
 end
 
