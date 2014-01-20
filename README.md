@@ -98,9 +98,9 @@ In your model:
   externally_readable and externally_accessible.
 
   You also define what REST operations a given model should 
-  support using the rest_interface method. Just like externally_readable and 
-  externally_writable it takes one or more symbols as arguments: :create, :read,
-  :update, :delete. The default is to not support any operation. You may 
+  support using the rest_interface method. Just like `externally_readable` and 
+  `externally_writable` it takes one or more symbols as arguments: `:create, :read,
+  :update, :delete`. The default is to not support any operation. You may 
   see this as whitelisting operations.
 
 ### Examples
