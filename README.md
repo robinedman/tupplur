@@ -46,21 +46,48 @@ application which acts like a REST endpoint.
   models for which you want to provide a REST interface.
 
   In Cuba:
-    on "/users" do
-      run Tupplur::RESTEndpoint.new(User)
-    end
-
+  ```ruby
+  on "/users" do 
+    run Tupplur::RESTEndpoint.new(User)
+  end
+  ```
+      
   Rack (in config.ru):
-    run Rack::URLMap.new("/" => YourApp.new, 
-                         "/users" => Tupplur::RESTEndpoint.new(User))
-
+  ```ruby
+  run Rack::URLMap.new("/" => YourApp.new, 
+                       "/users" => Tupplur::RESTEndpoint.new(User))
+  ```
+  
   If you're using Sinatra you might prefer the Rack method to mounting it 
   within Sinatra itself.
 
 ### Model mixin
 In your model:
-  include Tupplur::ModelExtensions
-
+  ```ruby
+  class User
+    include Mongoid::Document
+    include Tupplur::ModelExtensions
+   
+    # Define which operations you want to support.
+    rest_interface :create, 
+                   :read, 
+                   :update, 
+                   :delete
+    
+    # Fields that are to be both readable and writable.
+    externally_accessible :name,
+                          :email
+    
+    # Read-only fields.
+    externally_readable :active
+    
+    # Put your regular Mongoid model code here (or anywhere you want to as the ordering doesn't matter.)
+    field :name, type: String
+    field :email, type: String
+    field :password, type: String
+    field :active, type: Boolean, default: false
+  end
+  ```
   This is where you define what parts of your model you want to 
   expose outside of your backend application. This is configured 
   in a similar manner to the way we choose to expose attributes on
