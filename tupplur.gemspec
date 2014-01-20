@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Tupplur::VERSION
   spec.authors       = ["Robin Edman"]
   spec.email         = ["robin.edman@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
+  spec.description   = %q{Tupplur extends Mongoid, allowing fields to be exposed as readable or writable from outside of your application.}
   spec.summary       = spec.description
   spec.homepage      = ""
   spec.license       = "MIT"
