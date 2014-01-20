@@ -1,8 +1,21 @@
 # Tupplur
 
-Tupplur is a REST model import/export library for Rack applications using Mongoid. It's useful when building APIs for 
-mobile or Single Page Applications (maybe using Backbone, Spine, AngularJS or 
-whatever framework you prefer).
+Tupplur extends your Mongoid models, allowing you to expose fields as readable 
+or writable from outside of your application. It includes a Rack REST adapter, 
+so that any Rack app can expose some or all of its' models as JSON easily 
+through a standard REST CRUD api. 
+
+This library is especially useful if you're building APIs for mobile or 
+Single Page Applications (maybe using Backbone, Spine, AngularJS or whichever 
+framework you prefer).
+
+It's been designed to work well straight on top of Rack, or with lightweight 
+Rack-based frameworks such as Sinatra and Cuba. In fact, the REST adapter is 
+implemented as a Cuba application.
+
+If you're using Rails you're probably better off with another solution at the 
+moment, since it might make more sense to use something that's more 
+integrated into the framework.
 
 ## Installation
 
@@ -18,16 +31,19 @@ Or install it yourself as:
 
     $ gem install tupplur
 
+If necessary in your application:
+  require 'tupplur' at the appropriate place.
+
 ## Usage
 
 Tupplur is divided into two parts: a model mixin and a Rack 
 application which acts like a REST endpoint.
 
 ### REST endpoint Rack application
-  Mount the Rack app on a route of your choice. The details of 
-  how you do this will depend on which framework you're using.
+  After Mongoid has been set up, mount the Rack app on a route of your choice. 
+  The details of how you do this will depend on which framework you're using.
   Each model gets its' own endpoint. So repeat this for all 
-  models for which you want to provide a REST interface. 
+  models for which you want to provide a REST interface.
 
   In Cuba:
     on "/users" do
@@ -39,7 +55,7 @@ application which acts like a REST endpoint.
                          "/users" => Tupplur::RESTEndpoint.new(User))
 
   If you're using Sinatra you might prefer the Rack method to mounting it 
-  within Sinatra.
+  within Sinatra itself.
 
 ### Model mixin
 In your model:
@@ -48,12 +64,18 @@ In your model:
   This is where you define what parts of your model you want to 
   expose outside of your backend application. This is configured 
   in a similar manner to the way we choose to expose attributes on
-  objects in plain Ruby. There you use atr_reader and 
+  objects in plain Ruby. There we use atr_reader and 
   attr_accessor. Tupplur includes the corresponding methods 
   externally_readable and externally_accessible.
 
   You also define what REST operations a given model should 
-  support using the rest_interface method.
+  support using the rest_interface method. Just like externally_readable and 
+  externally_writable it takes one or more symbols as arguments: :create, :read,
+  :update, :delete. The default is to not support any operation. You may 
+  see this as whitelisting operations.
+
+### Examples
+In the test directory you'll find an example app which uses the Cuba framework.
 
 ## Contributing
 
