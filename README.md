@@ -81,7 +81,8 @@ In your model:
     # Read-only fields.
     externally_readable :active
     
-    # Put your regular Mongoid model code here (or anywhere you want to as the ordering doesn't matter.)
+    # Put your regular Mongoid model code here 
+    # (or anywhere you want to as the ordering doesn't matter.)
     field :name, type: String
     field :email, type: String
     field :password, type: String
