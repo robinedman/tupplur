@@ -32,9 +32,7 @@ Or install it yourself as:
     $ gem install tupplur
 
 If necessary in your application:
-    ```
-    require 'tupplur' # at the appropriate place.
-    ```
+    `require 'tupplur'` at the appropriate place.
 
 ## Usage
 
@@ -93,15 +91,14 @@ In your model:
   This is where you define what parts of your model you want to 
   expose outside of your backend application. This is configured 
   in a similar manner to the way we choose to expose attributes on
-  objects in plain Ruby. There we use atr_reader and 
-  attr_accessor. Tupplur includes the corresponding methods 
-  externally_readable and externally_accessible.
+  objects in plain Ruby. There we use `attr_reader` and 
+  `attr_accessor`. Tupplur includes the corresponding methods 
+  `externally_readable` and `externally_accessible`.
 
   You also define what REST operations a given model should 
-  support using the rest_interface method. Just like `externally_readable` and 
+  support using the `rest_interface method`. Just like `externally_readable` and 
   `externally_writable` it takes one or more symbols as arguments: `:create, :read,
-  :update, :delete`. The default is to not support any operation. You may 
-  see this as whitelisting operations.
+  :update, :delete`. The default is to not support any operation.
 
 ### Examples
 In the test directory you'll find an example app which uses the Cuba framework.
