@@ -68,7 +68,7 @@ In your model:
     include Mongoid::Document
     include Tupplur::ModelExtensions
    
-    # Define which operations you want to support.
+    # The operations you want to support.
     rest_interface :create, 
                    :read, 
                    :update, 
@@ -82,7 +82,7 @@ In your model:
     externally_readable :active
     
     # Put your regular Mongoid model code here 
-    # (or anywhere you want to as the ordering doesn't matter.)
+    # (or anywhere you want to as the ordering doesn't matter).
     field :name, type: String
     field :email, type: String
     field :password, type: String
