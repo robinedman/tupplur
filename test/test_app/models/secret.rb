@@ -1,6 +1,6 @@
 class Secret
-  include Tupplur::ModelExtensions
   include Mongoid::Document
+  include Tupplur::ModelExtensions
 
   field :message, type: String
 end

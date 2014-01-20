@@ -1,6 +1,6 @@
 class User
-  include Tupplur::ModelExtensions
   include Mongoid::Document
+  include Tupplur::ModelExtensions
 
   rest_interface :create, 
                  :read, 
