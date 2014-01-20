@@ -1,7 +1,8 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'tupplur/version'
+#lib = File.expand_path('../lib', __FILE__)
+#$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# require 'tupplur/version'
+require File.expand_path('../lib/tupplur/version', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = "tupplur"
@@ -27,9 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "mongoid", "~> 3.0"
 
   spec.add_runtime_dependency "cuba", "~>3.1.0"
-  # Mongoid is an implicitly assumed dependency.
-
-  # We don't specify a version since we don't want to risk conflicts with
+  # Mongoid is an implicitly assumed dependency. So is ActiveSupport.
+  # We don't specify those versions since we don't want to risk conflicts with
   # Mongoid.
-  spec.add_runtime_dependency "activesupport"
 end
