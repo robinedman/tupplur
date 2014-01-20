@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "turn", "~> 0.9"
-  spec.add_development_dependency "activesupport"
+  spec.add_development_dependency "activesupport", "~> 3.0"
   spec.add_development_dependency "rack-test", "~> 0.6.2"
   spec.add_development_dependency "virtus", "~> 1.0"
   spec.add_development_dependency "mongoid", "~> 3.0"
