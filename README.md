@@ -1,6 +1,6 @@
 # Tupplur
 
-Tupplur extends your Mongoid models, allowing you to expose fields as readable 
+Tupplur extends your Mongoid 3.x models, allowing you to expose fields as readable 
 or writable from outside of your application. It includes a Rack REST adapter, 
 so that any Rack app can expose some or all of its' models as JSON easily 
 through a standard REST CRUD api. 
