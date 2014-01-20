@@ -54,7 +54,7 @@ application which acts like a REST endpoint.
   end
   ```
       
-  Rack (in config.ru):
+  In Rack (in config.ru):
   ```ruby
   run Rack::URLMap.new("/" => YourApp.new, 
                        "/users" => Tupplur::RESTEndpoint.new(User))
