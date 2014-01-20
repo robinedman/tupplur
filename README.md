@@ -32,7 +32,9 @@ Or install it yourself as:
     $ gem install tupplur
 
 If necessary in your application:
-  require 'tupplur' at the appropriate place.
+    ```
+    require 'tupplur' # at the appropriate place.
+    ```
 
 ## Usage
 
