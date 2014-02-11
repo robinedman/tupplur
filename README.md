@@ -97,7 +97,7 @@ In your model:
   `externally_readable` and `externally_accessible`.
 
   You also define what REST operations a given model should 
-  support using the `rest_interface method`. Just like `externally_readable` and 
+  support using the `rest_interface` method. Just like `externally_readable` and 
   `externally_writable` it takes one or more symbols as arguments: `:create, :read,
   :update, :delete`. The default is to not support any operation.
 
